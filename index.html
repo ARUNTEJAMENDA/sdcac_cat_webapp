@@ -1,0 +1,143 @@
+<!DOCTYPE HTML>
+<html lang="en">
+    <head>
+        <title>EXAM WEBAPP | SDCAC</title>
+        <link rel="stylesheet" href="index.css">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <meta charset="UTF-8"/>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script src="jquery.js"></script>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    </head>
+    <body>
+        <div id="main">
+            <div id="company" class="l">CAT MOCK TEST #2</div>
+            <div id="time" class="r">Time Left: 00:40:00<script></script></div>
+            <div id="sections" class="l">
+                <div id="sh">Sections:</div>
+                <input type="hidden" id="sec_no" value="s1"/>
+                <span id="s" class='s1' onclick="document.getElementById('sec_no').value = this.className;colorchanger(this.className);">Verbal Ability & Reading Comprehensive </span>
+                <span id="s" class='s2' onclick="document.getElementById('sec_no').value = this.className;colorchanger(this.className);">Data Interpretation and logical Reasoning </span>
+                <span id="s" class='s3' onclick="document.getElementById('sec_no').value = this.className;colorchanger(this.className);">Quantitive Aptitude</span>
+                <script>
+                    function colorchanger(cls){
+                        if (cls=="s1"){
+                            $(".s2").css("background","rgb(234, 234, 234)");
+                            $(".s3").css("background","rgb(234, 234, 234)");
+                            $(".s2").css("color","black");
+                            $(".s3").css("color","black");
+                            $(".s1").css("background","rgb(0, 105, 150)");
+                            $(".s1").css("color","white");
+                        }else if (cls=="s2"){
+                            $(".s1").css("background","rgb(234, 234, 234)");
+                            $(".s3").css("background","rgb(234, 234, 234)");
+                            $(".s1").css("color","black");
+                            $(".s3").css("color","black");
+                            $(".s2").css("background","rgb(0, 105, 150)");
+                            $(".s2").css("color","white");
+                        }else if (cls=="s3"){
+                            $(".s1").css("background","rgb(234, 234, 234)");
+                            $(".s2").css("background","rgb(234, 234, 234)");
+                            $(".s1").css("color","black");
+                            $(".s2").css("color","black");
+                            $(".s3").css("background","rgb(0, 105, 150)");
+                            $(".s3").css("color","white");
+                        }
+                    }
+                </script>
+            </div>
+            <div id="username" class="r">
+                <span id="name">SDCAC | WEBTEAM</span>
+                <!-- <span id="user_img"><img style="aspect-ratio:400/400;height:80%;" 
+                    src="user.png" alt="user_img"></span> -->
+                    <span id="user_img"><img style="aspect-ratio:400/400;height:80%;" src="https://i.ibb.co/dk4B8q4/user.png" alt="user_img"></span>
+            </div>
+            <div id="qsnno" class="l">
+                <span style="font-weight: bold;">Question No: <script>document.write("1");</script></span>
+                <span style="padding-left:20px;font-weight: bold;color:rgb(125, 125, 125)">Marks : +3, -1</span>
+            </div>
+            <div id="qsnh" class="r">
+                Question Palette:
+            </div>
+            <div id="qsn" class="l"></div>
+            <div id="qsn_menu" class="r">
+                <div id="menu">
+                    <span>
+                        Answered<br>
+                        <i class="fa fa-square" style="font-size: 20px;color:rgb(0, 105, 150);"></i>
+                        <span id="num" style="color:black;font-size: 17px;font-weight: bold;">1</span>
+                    </span>
+                    <span>
+                        Not Answered<br>
+                        <i class="fa fa-square"  style="font-size: 20px;color:white;"></i>
+                        <span id="num" style="color:black;font-size: 17px;font-weight: bold;">0</span>
+                    </span>
+                    <span>
+                        Marked for Review <br>
+                        <i class="fa fa-bookmark-o" style="font-size: 20px;color:rgb(0, 105, 150);"></i>
+                        <span id="num" style="color:black;font-size: 17px;font-weight: bold;">1</span>
+                    </span>
+                    <span>
+                        Not Visited<br>
+                        <i class="fa fa-square" style="font-size: 20px;"></i>
+                        <span id="num" style="color:black;font-size: 17px;font-weight: bold;">0</span>
+                    </span>
+                </div>
+                <div id="qsn_n">
+                    <div id="selector" style="display:none;">
+                        <h4>Select Your Question:</h4>
+                        <select id="select" onchange="question(this.value);"></select>
+                        <div id="mob_qsn">
+                            <script>
+                                function question(qsno){
+                                    var sec = $("#sec_no").val().trim();
+                                    // alert("Section: "+sec+" | Q: "+qsno);
+                                    document.getElementById("mob_qsn").textContent = qsno;
+                                }
+                            </script>
+                        </div>
+                    </div>
+                    <script>
+                        $(document).ready(function(){
+                            //---------DEFAULT-----------
+                            colorchanger("s1");question(1);
+                            //----------------------------
+                            if(screen.width>=900){
+                                for(var i=1; i<25; i++){
+                                    var patch= "<button type='button' class='qsn_nums' id='q"+i+"'>"+i+"</button>";
+                                    document.getElementById("qsn_n").innerHTML = document.getElementById("qsn_n").innerHTML + patch;
+                                }
+                            }else{
+                                $("#main").css("font-size","10px");
+                                //
+                                $("#qsn_n").css("display","flex");$("#qsn_n").css("justify-content","center");$("#qsn_n").css("align-items","center");
+                                //
+                                $("#selector").css("display","flex");
+                                $("#selector").css("flex-direction","column");
+                                $("#selector").css("justify-content","space-evenly");
+                                $("#selector").css("align-items","center");
+                                //
+                                for(var i=1; i<25; i++){
+                                    var patch= "<option id='op'><button type='button' class='qsn_nums' id='q"+i+"'>"+i+"</button></option>";
+                                    document.getElementById("select").innerHTML = document.getElementById("select").innerHTML + patch;
+                                }
+                            }
+                        });
+                    </script>
+                </div>
+            </div>
+            <div id="menu1" class="l">
+                <span>
+                    <button id="clr" type="button">Clear Response</button>
+                    <button id="rev" type="button">Mark for Review and Next</button>
+                </span>
+                <span>
+                    <button id="save_nxt" type="button" onmouseover="this.textContent='Save and Next ⫸'" onmouseout="this.textContent='Save and Next'" >Save and Next</button>
+                </span>
+            </div>
+            <div id="menu2" class="r">
+                <button id="submit_test" type="button">Submit the Test</button>
+            </div>
+        </div>
+    </body>
+</html>
