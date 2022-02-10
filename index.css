@@ -257,7 +257,9 @@ body::-webkit-scrollbar-thumb{
     }
     #select{
         width:50vw;
-        height:10vh;
+        height:5vh;
+        border-radius: 18px;
+        margin:0 0 5vh 0;
         text-align: center;
     }
     #op{
