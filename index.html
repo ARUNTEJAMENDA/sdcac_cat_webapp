@@ -86,14 +86,13 @@
                 <div id="qsn_n">
                     <div id="selector" style="display:none;">
                         <h2>Select Your Question:</h2>
-                        <div id="select"></div>
-                        <!-- <select id="select" onchange="question(this.value);"></select> -->
+                        <div id="select"></div> <!--for adding buttons in a row-->
                         <div id="mob_qsn">
                             <script>
                                 function question(qsno){
                                     var sec = $("#sec_no").val().trim();
                                     // alert("Section: "+sec+" | Q: "+qsno);
-                                    document.getElementById("mob_qsn").textContent = qsno;
+                                    document.getElementById("mob_qsn").textContent = "Section: "+sec+" | Q: "+qsno;
                                 }
                             </script>
                         </div>
